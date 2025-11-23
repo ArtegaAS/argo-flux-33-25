@@ -40,18 +40,6 @@ data:
     }
 
 ---
-# SealedSecret
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  name: nginx-passwords
-  namespace: default
-spec:
-  encryptedData:
-    root-password: AgCrHB+r5pPK/nUbnHWD+6TOpX+zFE0bxpwJPb64XizCxOvyvFbNK+qQidTOntTYa4MS2HcQLjeueCGcVAHiNipD2E0RcEZCdVHnC/y5UnrMEx9bef1h3ZlRyYgozei7aat3EPBlcs5T5XGX5ey8xsltfVUEGNwDzWUcg3QVv3XCacCmbau7/Jc1v/0uXf/YznkoVzuC/r2cpplC8iZo+0mFW>
-    admin-password: AgBCK51SKqHhwdo7dadO2l7yholhSJPETkv5ssMaPWuXK79aw3q1wyASKE6DH5N+hgD79NaZ638hJcErzxhVhaW1LsiKTczb82puUTDd0D5/cMW/E/GDQSntSKW7XnuT4AH+rQSSsNSfKCoTTR2A3OoN6Ez9M5+W9jAsB6NpPUkcET7wxaHkqKVr+NjJZoAfhYBRCPRWBYX17iriS3T/QrTb>
-
----
 # Deployment: Nginx + PHP-FPM
 apiVersion: apps/v1
 kind: Deployment
