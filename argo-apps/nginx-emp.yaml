@@ -1,121 +1,37 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2025-11-24T11:30:26Z"
-  generation: 15
+  creationTimestamp: "2025-11-24T11:59:13Z"
+  generation: 4
   name: nginx-emp
   namespace: argocd
-  resourceVersion: "3403450"
-  uid: 10ce086b-e36a-464e-b921-6bbee1bdeb42
+  resourceVersion: "3406672"
+  uid: 719d215b-573e-44e6-8431-2c0ce35645b0
 spec:
   destination:
-    namespace: ci-cd
+    namespace: default
     server: https://kubernetes.default.svc
   project: default
   source:
+    directory:
+      jsonnet:
+        tlas:
+        - name: ""
+          value: ""
     path: ./apps/
     repoURL: https://github.com/ArtegaAS/argo-flux-33-25.git
     targetRevision: main
   syncPolicy:
     automated:
       enabled: true
+    syncOptions:
+    - CreateNamespace=true
 status:
   controllerNamespace: argocd
   health:
-    lastTransitionTime: "2025-11-24T11:31:16Z"
+    lastTransitionTime: "2025-11-24T11:59:13Z"
     status: Healthy
-  history:
-  - deployStartedAt: "2025-11-24T11:30:27Z"
-    deployedAt: "2025-11-24T11:30:27Z"
-    id: 0
-    initiatedBy:
-      automated: true
-    revision: eaa4db6e6b2759fd3c067f94a376d348de762f6b
-    source:
-      path: ./apps/
-      repoURL: https://github.com/ArtegaAS/argo-flux-33-25.git
-      targetRevision: main
-  operationState:
-    finishedAt: "2025-11-24T11:30:27Z"
-    message: successfully synced (all tasks run)
-    operation:
-      initiatedBy:
-        automated: true
-      retry:
-        limit: 5
-      sync:
-        revision: eaa4db6e6b2759fd3c067f94a376d348de762f6b
-        source:
-          path: ./apps/
-          repoURL: https://github.com/ArtegaAS/argo-flux-33-25.git
-          targetRevision: main
-    phase: Succeeded
-    startedAt: "2025-11-24T11:30:27Z"
-    syncResult:
-      resources:
-      - group: ""
-        hookPhase: Running
-        kind: Secret
-        message: secret/nginx-passwords created
-        name: nginx-passwords
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: ""
-        hookPhase: Running
-        kind: ConfigMap
-        message: configmap/nginx-index created
-        name: nginx-index
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: ""
-        hookPhase: Running
-        kind: ConfigMap
-        message: configmap/nginx-conf created
-        name: nginx-conf
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: ""
-        hookPhase: Running
-        kind: Service
-        message: service/nginx-service created
-        name: nginx-service
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: apps
-        hookPhase: Running
-        images:
-        - nginx:1.25
-        - php:8.2-fpm
-        kind: Deployment
-        message: deployment.apps/nginx-deployment created
-        name: nginx-deployment
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      - group: networking.k8s.io
-        hookPhase: Running
-        kind: Ingress
-        message: ingress.networking.k8s.io/nginx-ingress created
-        name: nginx-ingress
-        namespace: default
-        status: Synced
-        syncPhase: Sync
-        version: v1
-      revision: eaa4db6e6b2759fd3c067f94a376d348de762f6b
-      source:
-        path: ./apps/
-        repoURL: https://github.com/ArtegaAS/argo-flux-33-25.git
-        targetRevision: main
-  reconciledAt: "2025-11-24T11:37:32Z"
+  reconciledAt: "2025-11-24T12:01:43Z"
   resourceHealthSource: appTree
   resources:
   - kind: ConfigMap
@@ -161,11 +77,16 @@ status:
   sync:
     comparedTo:
       destination:
-        namespace: ci-cd
+        namespace: default
         server: https://kubernetes.default.svc
       source:
+        directory:
+          jsonnet:
+            tlas:
+            - name: ""
+              value: ""
         path: ./apps/
         repoURL: https://github.com/ArtegaAS/argo-flux-33-25.git
         targetRevision: main
-    revision: eaa4db6e6b2759fd3c067f94a376d348de762f6b
+    revision: 9ab1442e5107895877251537dc6f895ae36dd538
     status: Synced
