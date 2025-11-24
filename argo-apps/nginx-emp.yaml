@@ -1,11 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2025-11-24T11:59:13Z"
   generation: 4
   name: nginx-emp
   namespace: argocd
-  resourceVersion: "3406672"
   uid: 719d215b-573e-44e6-8431-2c0ce35645b0
 spec:
   destination:
@@ -29,9 +27,7 @@ spec:
 status:
   controllerNamespace: argocd
   health:
-    lastTransitionTime: "2025-11-24T11:59:13Z"
     status: Healthy
-  reconciledAt: "2025-11-24T12:01:43Z"
   resourceHealthSource: appTree
   resources:
   - kind: ConfigMap

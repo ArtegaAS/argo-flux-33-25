@@ -1,11 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: "2025-11-24T11:57:49Z"
   generation: 4
   name: jenkins
   namespace: argocd
-  resourceVersion: "3406500"
   uid: d71d21b9-a4d2-46e8-bad8-7cc53081fd71
 spec:
   destination:
@@ -24,9 +22,7 @@ spec:
 status:
   controllerNamespace: argocd
   health:
-    lastTransitionTime: "2025-11-24T11:57:49Z"
     status: Healthy
-  reconciledAt: "2025-11-24T12:00:07Z"
   resourceHealthSource: appTree
   resources:
   - kind: ConfigMap
