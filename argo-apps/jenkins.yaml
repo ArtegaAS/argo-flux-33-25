@@ -1,0 +1,218 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2025-11-24T11:31:43Z"
+  generation: 17
+  name: jenkins
+  namespace: argocd
+  resourceVersion: "3403293"
+  uid: 47672be2-ab2d-40e4-861e-811143da34c2
+spec:
+  destination:
+    namespace: ci-cd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: jenkins
+    repoURL: https://ArtegaAS.github.io/jenkins-helm
+    targetRevision: 0.1.0
+  syncPolicy:
+    automated:
+      enabled: true
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-11-24T11:32:16Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-11-24T11:31:43Z"
+    deployedAt: "2025-11-24T11:31:44Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revision: 0.1.0
+    source:
+      chart: jenkins
+      repoURL: https://ArtegaAS.github.io/jenkins-helm
+      targetRevision: 0.1.0
+  operationState:
+    finishedAt: "2025-11-24T11:31:44Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 0.1.0
+        source:
+          chart: jenkins
+          repoURL: https://ArtegaAS.github.io/jenkins-helm
+          targetRevision: 0.1.0
+    phase: Succeeded
+    startedAt: "2025-11-24T11:31:43Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/ci-cd created
+        name: ci-cd
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/jenkins-secret created
+        name: jenkins-secret
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/jenkins-config created
+        name: jenkins-config
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/basic-security created
+        name: basic-security
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: "clusterrolebinding.rbac.authorization.k8s.io/jenkins reconciled.
+          reconciliation required create\n\tmissing subjects added:\n\t\t{Kind:ServiceAccount
+          APIGroup: Name:default Namespace:ci-cd}. clusterrolebinding.rbac.authorization.k8s.io/jenkins
+          configured. Warning: resource clusterrolebindings/jenkins is missing the
+          kubectl.kubernetes.io/last-applied-configuration annotation which is required
+          by  apply.  apply should only be used on resources created declaratively
+          by either  create --save-config or  apply. The missing annotation will be
+          patched automatically."
+        name: jenkins
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/jenkins created
+        name: jenkins
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - jfrog.it-academy.by/public/jenkins-ci:svavchinnik_33
+        kind: Deployment
+        message: deployment.apps/jenkins created
+        name: jenkins
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: autoscaling
+        hookPhase: Running
+        kind: HorizontalPodAutoscaler
+        message: horizontalpodautoscaler.autoscaling/jenkins created
+        name: jenkins
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/ingress-jenkins created
+        name: ingress-jenkins
+        namespace: ci-cd
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 0.1.0
+      source:
+        chart: jenkins
+        repoURL: https://ArtegaAS.github.io/jenkins-helm
+        targetRevision: 0.1.0
+  reconciledAt: "2025-11-24T11:36:02Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: ConfigMap
+    name: basic-security
+    namespace: ci-cd
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: jenkins-config
+    namespace: ci-cd
+    status: Synced
+    version: v1
+  - kind: Namespace
+    name: ci-cd
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: jenkins-secret
+    namespace: ci-cd
+    status: Synced
+    version: v1
+  - kind: Service
+    name: jenkins
+    namespace: ci-cd
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: jenkins
+    namespace: ci-cd
+    status: Synced
+    version: v1
+  - group: autoscaling
+    kind: HorizontalPodAutoscaler
+    name: jenkins
+    namespace: ci-cd
+    status: Synced
+    version: v2
+  - group: networking.k8s.io
+    kind: Ingress
+    name: ingress-jenkins
+    namespace: ci-cd
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: jenkins
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Helm
+  summary:
+    externalURLs:
+    - http://jenkins.k8s-1.sa/
+    images:
+    - jfrog.it-academy.by/public/jenkins-ci:svavchinnik_33
+  sync:
+    comparedTo:
+      destination:
+        namespace: ci-cd
+        server: https://kubernetes.default.svc
+      source:
+        chart: jenkins
+        repoURL: https://ArtegaAS.github.io/jenkins-helm
+        targetRevision: 0.1.0
+    revision: 0.1.0
+    status: Synced
